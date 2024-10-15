@@ -9,9 +9,9 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('detail_transaksis', function (Blueprint $table) {
+        Schema::create('taransaksidetails', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('transaksi_id');
             $table->unsignedBigInteger('barang_id');
@@ -31,8 +31,8 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('detail_transaksis');
+        Schema::dropIfExists('taransaksidetails');
     }
 };

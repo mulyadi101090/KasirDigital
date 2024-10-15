@@ -14,22 +14,12 @@ class Transaksi extends Model
     protected $fillable = ['user_id', 'total_harga'];
 
     /**
-     * Relasi ke DetailTransaksi
+     * Relasi ke User
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function detailTransaksis(): HasMany
+    public function user()
     {
-        return $this->hasMany(TransaksiDetail::class, 'transaksi_id');
-    }
-
-    /**
-     * Relasi ke Barang melalui DetailTransaksi
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-     */
-    public function barangs(): HasManyThrough
-    {
-        return $this->hasManyThrough(Barang::class, TransaksiDetail::class, 'transaksi_id', 'id', 'id', 'barang_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
